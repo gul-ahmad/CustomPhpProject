@@ -14,16 +14,10 @@ $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-  //  $validator = new Validatator();
-
     if (!Validatator::string($_POST['body'], 1, 500)) {
 
         $errors['body'] = 'A body having length of less than 500 is required.';
     }
-    // if (strlen($_POST['body']) > 500) {
-
-    //     $errors['body'] = 'The body shoud not be greater than 500 chars';
-    // }
 
     if (empty($errors)) {
 
@@ -36,4 +30,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 
-require "views/note-create.view.php";
+require "views/notes/create.view.php";
