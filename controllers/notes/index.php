@@ -1,9 +1,9 @@
 <?php
 
-$config = require('config.php');
+$config = require(base_path('config.php'));
 
 $db = new Database($config);
-$head = "Notes";
+//$head = "Notes";
 
 $query = "select * from posts where user_id = 3";
 $posts = $db->query($query)->get();
@@ -12,4 +12,10 @@ $posts = $db->query($query)->get();
 
 
 
-require "views/notes/index.view.php";
+//require "views/notes/index.view.php";
+
+view('notes/index.view.php', [
+    'head' => 'Notes',
+    'posts' => $posts
+
+]);

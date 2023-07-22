@@ -1,11 +1,11 @@
 <?php
 
-$config = require('config.php');
+$config = require(base_path('config.php'));
 
 require('Validator.php');
 
 $db = new Database($config);
-$head = "Create a Post";
+//$head = "Create a Post";
 
 //dd($_SERVER);
 
@@ -30,4 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 
-require "views/notes/create.view.php";
+//require "views/notes/create.view.php";
+view('notes/create.view.php', [
+    'head' => 'Create A Post',
+
+]);
