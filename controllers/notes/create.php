@@ -1,8 +1,11 @@
 <?php
 
+use Core\Database;
+use Core\Validatator;
+
 $config = require(base_path('config.php'));
 
-require('Validator.php');
+require base_path('Core/Validator.php');
 
 $db = new Database($config);
 //$head = "Create a Post";

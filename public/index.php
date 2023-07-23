@@ -9,6 +9,9 @@ require BASE_PATH . 'Core/functions.php';
 
 spl_autoload_register(function ($class) {
 
-    require base_path("Core/" . $class . '.php');
+    //   as we are getting the Class as Core/Database so to replace
+    // with Core\Database
+    $class = str_replace('//', DIRECTORY_SEPARATOR, $class);
+    require base_path("{$class}.php");
 });
 require base_path('Core/router.php');
