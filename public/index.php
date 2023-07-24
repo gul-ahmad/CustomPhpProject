@@ -1,5 +1,7 @@
 <?php
 
+use Core\Router;
+
 const BASE_PATH = __DIR__ . '/../';
 
 
@@ -11,7 +13,25 @@ spl_autoload_register(function ($class) {
 
     //   as we are getting the Class as Core/Database so to replace
     // with Core\Database
-    $class = str_replace('//', DIRECTORY_SEPARATOR, $class);
+    //  dd($class);
+    $class = str_replace('\\', DIRECTORY_SEPARATOR, $class);
+
+    // dd($class);
     require base_path("{$class}.php");
 });
+
+
+
+$router = new Router();
+
+$url = parse_url($_SERVER['REQUEST_URI'])['path'];
+
+$routes = require base_path('routes.php');
+//routerToController($url, $routes);
+
+$method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
+
+$router->route($url, $method);
+
+
 require base_path('Core/router.php');
