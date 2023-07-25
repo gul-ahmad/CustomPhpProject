@@ -1,12 +1,14 @@
 <?php
 
+use Core\App;
 use Core\Database;
 use Core\Validatator;
 
-$config = require(base_path('config.php'));
+//$config = require(base_path('config.php'));
 require base_path('Core/Validator.php');
 
-$db = new Database($config);
+//$db = new Database($config);
+$db = App::resolve('Core/Database');
 //$head = "Create a Post";
 
 //dd($_SERVER);
