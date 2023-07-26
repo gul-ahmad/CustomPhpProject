@@ -9,9 +9,7 @@ require base_path('Core/Validator.php');
 
 //$db = new Database($config);
 $db = App::resolve('Core/Database');
-//$head = "Create a Post";
 
-//dd($_SERVER);
 
 
 $errors = [];
