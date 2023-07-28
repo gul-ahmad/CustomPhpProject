@@ -31,9 +31,9 @@ if (!empty($errors)) {
 }
 
 
-$result = $db->query('select * from users where email =:email', ['email' => $email])->find();
+$user = $db->query('select * from users where email =:email', ['email' => $email])->find();
 
-if ($result) {
+if ($user) {
 
     header('location: /register');
     exit();
@@ -43,9 +43,8 @@ if ($result) {
         'password' => password_hash($password, PASSWORD_BCRYPT),
     ]);
 
-    $_SESSION['user'] = [
-        'email' => $email
-    ];
+    login($user);
+
     header('location: /');
     exit();
 }
